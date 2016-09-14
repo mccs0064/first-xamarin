@@ -38,7 +38,7 @@ namespace RaysHotDogs.Utility
             //get dimensions of file from disk
 
             BitmapFactory.Options options = new BitmapFactory.Options { InJustDecodeBounds = true };
-            BitmapFactory.DecodeFile(fileName);
+            BitmapFactory.DecodeFile(fileName, options);
 
             //calculate ratio to resize image
             int outHeight = options.OutHeight;

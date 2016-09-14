@@ -47,7 +47,7 @@ namespace RaysHotDogs
         private void FindViews()
         {
             pictureImageView = FindViewById<ImageView>(Resource.Id.TakePictureImageView);
-            takePictureButton = FindViewById<Button>(Resource.Id.takePictureButton);
+            takePictureButton = FindViewById<Button>(Resource.Id.launchCameraButton);
         }
 
         private void HandleEvents()
