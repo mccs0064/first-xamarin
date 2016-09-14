@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/logoimageView"
+        android:src="@drawable/raylogo" />
+    <Button
+        android:text="Order Hot Dogs!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/orderButton" />
+    <Button
+        android:text="View Your cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cartButton" />
+    <Button
+        android:text="Take A Picture With Ray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/takePictureButton" />
+    <Button
+        android:text="Go To Ray's Store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mapButton" />
+    <Button
+        android:text="About Rays Hot Dogs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/aboutButton" />
+</LinearLayout>
