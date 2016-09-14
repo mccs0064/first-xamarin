@@ -32,7 +32,6 @@ namespace RaysHotDogs.Fragments
             listView = this.View.FindViewById<ListView>(Resource.Id.hotDogListView);
         }
 
-
         public void HandleEvents()
         {
             listView.ItemClick += ListView_ItemClick;

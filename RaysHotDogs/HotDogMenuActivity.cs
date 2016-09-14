@@ -12,6 +12,7 @@ using Android.Widget;
 using RaysHotDogs.Core.Model;
 using RaysHotDogs.Core.Service;
 using RaysHotDogs.Adapters;
+using RaysHotDogs.Fragments;
 
 namespace RaysHotDogs
 {
@@ -27,18 +28,39 @@ namespace RaysHotDogs
 
             SetContentView(Resource.Layout.HotDogMenuView);
 
-            hotDogListView = FindViewById<ListView>(Resource.Id.hotDogListView);
+            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
 
-            hotDogListView.FastScrollEnabled = true;
+            AddTab("Favorites", Resource.Drawable.FavoritesIcon, new FavoriteHotDogFragment());
+            AddTab("Meat Lovers", Resource.Drawable.MeatLoversIcon, new MeatLoversFragment());
+            AddTab("Veggie Lovers", Resource.Drawable.veggieloversicon, new VeggieLoversFragment());
 
-            hotDogDataService = new HotDogDataService();
+        }
 
-            allHotDogs = hotDogDataService.GetAllHotDogs();
 
-            hotDogListView.Adapter = new HotDogListAdapter(this, allHotDogs);
+        private void AddTab(string tabText, int iconResourceId, Fragment view)
+        {
+            var tab = this.ActionBar.NewTab();
+            tab.SetText(tabText);
+            tab.SetIcon(iconResourceId);
 
-            hotDogListView.ItemClick += HotDogListView_ItemClick;
+            //tab selected event handle
+            tab.TabSelected += delegate (object sender, ActionBar.TabEventArgs e)
+            {
+                var fragment = this.FragmentManager.FindFragmentById(Resource.Id.fragmentContainer);
+                if (fragment != null)
+                {
+                    e.FragmentTransaction.Remove(fragment);
+                }
+                e.FragmentTransaction.Add(Resource.Id.fragmentContainer, view);
+            };
 
+            //tab un-selected event handle
+            tab.TabUnselected += delegate (object sender, ActionBar.TabEventArgs e)
+            {
+                e.FragmentTransaction.Remove(view);
+            };
+
+            this.ActionBar.AddTab(tab);
         }
 
         private void HotDogListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
