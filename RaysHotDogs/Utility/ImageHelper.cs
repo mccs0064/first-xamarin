@@ -31,5 +31,33 @@ namespace RaysHotDogs.Utility
 
             return imageBitmap;
         }
+
+
+        public static Bitmap GetImageBitmapFromFilePath(string fileName, int width, int height)
+        {
+            //get dimensions of file from disk
+
+            BitmapFactory.Options options = new BitmapFactory.Options { InJustDecodeBounds = true };
+            BitmapFactory.DecodeFile(fileName);
+
+            //calculate ratio to resize image
+            int outHeight = options.OutHeight;
+            int outWidth = options.OutWidth;
+            int inSampleSize = 1;
+
+            if (outHeight > height || outWidth > width)
+            {
+                inSampleSize = outWidth > outHeight
+                    ? outHeight / height
+                    : outWidth / width;
+            }
+
+            //load image and have BitmapFactory resize it 
+            options.InSampleSize = inSampleSize;
+            options.InJustDecodeBounds = false;
+            Bitmap resizedBitmap = BitmapFactory.DecodeFile(fileName, options);
+
+            return resizedBitmap;
+        }
     }
 }

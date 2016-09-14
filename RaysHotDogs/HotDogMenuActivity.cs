@@ -33,7 +33,6 @@ namespace RaysHotDogs
             AddTab("Favorites", Resource.Drawable.FavoritesIcon, new FavoriteHotDogFragment());
             AddTab("Meat Lovers", Resource.Drawable.MeatLoversIcon, new MeatLoversFragment());
             AddTab("Veggie Lovers", Resource.Drawable.veggieloversicon, new VeggieLoversFragment());
-
         }
 
 
